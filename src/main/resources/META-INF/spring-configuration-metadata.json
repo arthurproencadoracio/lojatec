@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "tecloja.jwt",
+      "type": "br.com.tecloja.api.config.JwtProperties",
+      "sourceType": "br.com.tecloja.api.config.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "tecloja.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "br.com.tecloja.api.config.JwtProperties",
+      "description": "Chave secreta JWT para criptografia simétrica (HS256)"
+    },
+    {
+      "name": "tecloja.jwt.expiration",
+      "type": "java.lang.Long",
+      "sourceType": "br.com.tecloja.api.config.JwtProperties",
+      "description": "Expiração do token em milissegundos (padrão: 1 dia = 86400000ms)"
+    }
+  ]
+}
