@@ -72,6 +72,7 @@ public class DataSeeder implements CommandLineRunner {
             p1.setDescricao("Processador A17 Pro, Câmera tripla de 48MP, 256GB");
             p1.setPreco(new BigDecimal("9499.00"));
             p1.setEstoque(15);
+            p1.setAtivo(true);
             p1.setCategoria(smartphones);
             produtoRepository.save(p1);
 
@@ -80,6 +81,7 @@ public class DataSeeder implements CommandLineRunner {
             p2.setDescricao("Snapdragon 8 Gen 3, Caneta S-Pen, Câmera 200MP, 512GB");
             p2.setPreco(new BigDecimal("7999.00"));
             p2.setEstoque(20);
+            p2.setAtivo(true);
             p2.setCategoria(smartphones);
             produtoRepository.save(p2);
 
@@ -88,6 +90,7 @@ public class DataSeeder implements CommandLineRunner {
             p3.setDescricao("Processador Apple M2, Tela Liquid Retina de 13.6, 8GB RAM, SSD 256GB");
             p3.setPreco(new BigDecimal("8200.00"));
             p3.setEstoque(8);
+            p3.setAtivo(true);
             p3.setCategoria(notebooks);
             produtoRepository.save(p3);
 
@@ -96,6 +99,7 @@ public class DataSeeder implements CommandLineRunner {
             p4.setDescricao("Intel Core i7, Nvidia RTX 4050, 16GB RAM, SSD 512GB");
             p4.setPreco(new BigDecimal("5899.00"));
             p4.setEstoque(10);
+            p4.setAtivo(true);
             p4.setCategoria(notebooks);
             produtoRepository.save(p4);
 
@@ -104,6 +108,7 @@ public class DataSeeder implements CommandLineRunner {
             p5.setDescricao("Cancelamento ativo de ruído inteligente, Bateria de 30 horas");
             p5.setPreco(new BigDecimal("2199.00"));
             p5.setEstoque(30);
+            p5.setAtivo(true);
             p5.setCategoria(acessorios);
             produtoRepository.save(p5);
 
@@ -112,6 +117,7 @@ public class DataSeeder implements CommandLineRunner {
             p6.setDescricao("Switches táteis silenciosos de perfil baixo, iluminação inteligente");
             p6.setPreco(new BigDecimal("999.90"));
             p6.setEstoque(25);
+            p6.setAtivo(true);
             p6.setCategoria(acessorios);
             produtoRepository.save(p6);
         }

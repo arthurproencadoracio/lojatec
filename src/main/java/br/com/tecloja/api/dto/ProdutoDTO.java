@@ -8,6 +8,7 @@ public record ProdutoDTO(
     String descricao,
     BigDecimal preco,
     int estoque,
+    boolean ativo,
     Long categoriaId,
     String categoriaNome
 ) {}

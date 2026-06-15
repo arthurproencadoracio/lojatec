@@ -29,6 +29,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Transactional(readOnly = true)
     public List<ProdutoDTO> listarTodos() {
         return produtoRepository.findAll().stream()
+            .filter(Produto::isAtivo)
             .map(ProdutoMapper::toDTO)
             .collect(Collectors.toList());
     }
@@ -37,7 +38,8 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Transactional(readOnly = true)
     public ProdutoDTO buscarPorId(Long id) {
         Produto produto = produtoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com o ID: " + id));
+            .filter(Produto::isAtivo)
+            .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado ou inativo com o ID: " + id));
         return ProdutoMapper.toDTO(produto);
     }
 
@@ -45,6 +47,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Transactional(readOnly = true)
     public List<ProdutoDTO> buscarPorCategoria(Long categoriaId) {
         return produtoRepository.findByCategoriaId(categoriaId).stream()
+            .filter(Produto::isAtivo)
             .map(ProdutoMapper::toDTO)
             .collect(Collectors.toList());
     }
@@ -53,6 +56,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Transactional(readOnly = true)
     public List<ProdutoDTO> pesquisarPorNome(String busca) {
         return produtoRepository.pesquisarPorNome(busca).stream()
+            .filter(Produto::isAtivo)
             .map(ProdutoMapper::toDTO)
             .collect(Collectors.toList());
     }
@@ -92,6 +96,8 @@ public class ProdutoServiceImpl implements ProdutoService {
         Produto produto = produtoRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com o ID: " + id));
 
-        produtoRepository.delete(produto);
+        // Soft delete: marcar como inativo em vez de remoção física
+        produto.setAtivo(false);
+        produtoRepository.save(produto);
     }
 }

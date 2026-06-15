@@ -15,6 +15,7 @@ public class ProdutoMapper {
             produto.getDescricao(),
             produto.getPreco(),
             produto.getEstoque(),
+            produto.isAtivo(),
             produto.getCategoria() != null ? produto.getCategoria().getId() : null,
             produto.getCategoria() != null ? produto.getCategoria().getNome() : null
         );
