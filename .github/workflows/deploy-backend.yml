@@ -1,0 +1,32 @@
+name: CI/CD Backend - FastAPI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Código
+      uses: actions/checkout@v3
+
+    - name: Configurar Python (3.11)
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Instalar Dependências
+      run: |
+        pip install -r requirements.txt
+        pip install pytest pytest-asyncio pytest-mock
+
+    - name: Executar Testes Unitários
+      run: pytest
+
+    - name: Trigger Deploy na Render (Webhook)
+      if: success()
+      run: |
+        curl -X POST "$"
